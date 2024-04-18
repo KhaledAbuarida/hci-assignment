@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo List</title>
+</head>
+<body>
+  <div class="todo-container">
+    <h2>Todo List</h2>
+    <label for="title">Title:</label>
+    <input type="text" id="title" [(ngModel)]="title" placeholder="Todo Title">
+    <label for="desc">Description:</label>
+    <input type="text" id="desc" [(ngModel)]="description" placeholder="Todo Description">
+    <label for="date">Due Date:</label>
+    <input type="date" id="date" [(ngModel)]="date" >
+    <button class="add-button"(click)="addTodo()">Add</button>
+    <ul class="todo-list">
+      <li class="todo-item" *ngFor="let todo of todos; let i = index">
+        <div class="upper-part">
+          <b style="font-size: large;">{{ todo.title  }}</b>
+          <input type="checkbox"/>
+        </div>
+        <hr>
+        <div class="lower-part">
+          <div class="lp-left-part">
+            <div class="lp-desc">
+              <div>{{ todo.description  }}</div>
+            </div>
+            <div class="lp-date">
+              <span>{{ todo.date  }}</span>
+            </div>
+          </div>
+          <div class="lp-right-part"> 
+            <div class="edit-btn">
+              <button  class="editBtn" (click)="editTodo(i)">Edit</button>
+            </div>
+            <div class="del-btn">
+              <button  class="delete-button" (click)="deleteTodo(i)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
